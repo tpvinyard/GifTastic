@@ -2,11 +2,25 @@ $(document).ready(function() {
 
     const topics = ['corgi', 'wolf'];
 
-    for (let i=0; i < topics.length; i++) {
-        $("#buttons").append(`<button data-dog='${topics[i]}'>${topics[i]}</button>`);
+    function renderButtons() {
+        $("#buttons").empty();
+        for (let i=0; i < topics.length; i++) {
+            $("#buttons").append(`<button data-dog='${topics[i]}'>${topics[i]}</button>`);
+        }
+
     }
 
-    $("button").on("click", function() {
+    $("#add-dog").on("click", function(event) {
+        event.preventDefault();
+        let dogInput = $("#dog-input").val().trim();
+        topics.push(dogInput);
+        renderButtons();
+    });
+
+
+
+    $(document).on("click","button", function() {
+        $("#images").empty();
         let dog = $(this).attr("data-dog");
         queryURL = "https://api.giphy.com/v1/gifs/search?api_key=CirucykHGzeIGsP6elqaIVUsqTllQ1OG&q=" + dog + "&limit=10";
 
@@ -46,5 +60,7 @@ $(document).ready(function() {
         $(this).attr("data-state", "still");
         }
     })
+
+    renderButtons();
 
 });
