@@ -32,8 +32,10 @@ $(document).ready(function() {
             for (let i = 0; i < results.length; i++) {
                 let gifDiv = $("<div>");
                 gifDiv.attr('class', 'leftFloat');
+                let title = results[i].title;
+                let h5Title = $("<h5>").text(`Title: "${title}"`);
                 let rating = results[i].rating;
-                let h4 = $("<h4>").text(rating);
+                let h5Rating = $("<h5>").text(`Rating: "${rating}"`);
                 let dogImage = $("<img>");
                 dogImage.attr("src", results[i].images.fixed_height_still.url);
                 dogImage.attr("class", "gif");
@@ -41,7 +43,8 @@ $(document).ready(function() {
                 dogImage.attr("data-animate", results[i].images.fixed_height.url);
                 dogImage.attr("data-state", "still");
 
-                gifDiv.append(h4);
+                gifDiv.append(h5Title);
+                gifDiv.append(h5Rating);
                 gifDiv.append(dogImage);
 
                 $("#images").append(gifDiv);

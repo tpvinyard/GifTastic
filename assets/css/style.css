@@ -26,9 +26,14 @@ body {
 
 #buttons {
     margin-top: 2%;
+    margin-bottom: 3%;
 }
 
 .leftFloat {
+    background: white;
+    border: 1px solid black;
+    padding: 5px;
     float: left;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
