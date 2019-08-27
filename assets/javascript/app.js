@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
-    const topics = ['corgi', 'wolf'];
+    const topics = ['corgi', 'french bulldog', 'bulldog', 'great dane', 'greyhound', 'poodle', 'golden retriever', 'labrador'];
 
     function renderButtons() {
         $("#buttons").empty();
         for (let i=0; i < topics.length; i++) {
-            $("#buttons").append(`<button data-dog='${topics[i]}'>${topics[i]}</button>`);
+            $("#buttons").append(`<button class='btn btn-info btn-lg' data-dog='${topics[i]}'>${topics[i]}</button>`);
         }
 
     }
@@ -31,6 +31,7 @@ $(document).ready(function() {
             let results = response.data;
             for (let i = 0; i < results.length; i++) {
                 let gifDiv = $("<div>");
+                gifDiv.attr('class', 'leftFloat');
                 let rating = results[i].rating;
                 let h4 = $("<h4>").text(rating);
                 let dogImage = $("<img>");
