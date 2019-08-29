@@ -37,20 +37,32 @@ $(document).ready(function() {
                 let rating = results[i].rating;
                 let h5Rating = $("<h5>").text(`Rating: "${rating}"`);
                 let dogImage = $("<img>");
+                // let favoriteDiv = $("<div>");
+                // let favoriteButton = $('<button>').text('Favorite!');
+                // favoriteButton.attr("id", results[i].images.fixed_height.url);
+                // favoriteButton.attr("class", "favButton")
                 dogImage.attr("src", results[i].images.fixed_height_still.url);
                 dogImage.attr("class", "gif");
                 dogImage.attr("data-still", results[i].images.fixed_height_still.url);
                 dogImage.attr("data-animate", results[i].images.fixed_height.url);
                 dogImage.attr("data-state", "still");
+                // let downloadGif = `<a href="${results[i].images.fixed_height.url}" class="btn" download>Download</a>`
 
+                // favoriteDiv.append(favoriteButton);
                 gifDiv.append(h5Title);
                 gifDiv.append(h5Rating);
                 gifDiv.append(dogImage);
+                // gifDiv.append(favoriteDiv);
+                // gifDiv.append(downloadGif);
 
                 $("#images").append(gifDiv);
             }
         })
     })
+
+    // $(document).on("click",".favButton", function() {
+
+    // })
 
     $(document).on("click",".gif", function() {
 
