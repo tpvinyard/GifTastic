@@ -5,7 +5,7 @@ $(document).ready(function() {
     function renderButtons() {
         $("#buttons").empty();
         for (let i=0; i < topics.length; i++) {
-            $("#buttons").append(`<button class='btn btn-info btn-lg' data-dog='${topics[i]}'>${topics[i]}</button>`);
+            $("#buttons").append(`<button class='btn btn-info btn-lg dogs' data-dog='${topics[i]}'>${topics[i]}</button>`);
         }
 
     }
@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 
 
-    $(document).on("click","button", function() {
+    $(document).on("click", ".dogs", function() {
         $("#images").empty();
         let dog = $(this).attr("data-dog");
         queryURL = "https://api.giphy.com/v1/gifs/search?api_key=CirucykHGzeIGsP6elqaIVUsqTllQ1OG&q=" + dog + "&limit=10";
@@ -31,6 +31,7 @@ $(document).ready(function() {
             let results = response.data;
             for (let i = 0; i < results.length; i++) {
                 let gifDiv = $("<div>");
+                gifDiv.attr('id', `${[i]}`)
                 gifDiv.attr('class', 'leftFloat');
                 let title = results[i].title;
                 let h5Title = $("<h5>").text(`Title: "${title}"`);
@@ -39,7 +40,7 @@ $(document).ready(function() {
                 let dogImage = $("<img>");
                 // let favoriteDiv = $("<div>");
                 // let favoriteButton = $('<button>').text('Favorite!');
-                // favoriteButton.attr("id", results[i].images.fixed_height.url);
+                // favoriteButton.attr("id", `${[i]}`);
                 // favoriteButton.attr("class", "favButton")
                 dogImage.attr("src", results[i].images.fixed_height_still.url);
                 dogImage.attr("class", "gif");
@@ -60,9 +61,9 @@ $(document).ready(function() {
         })
     })
 
-    // $(document).on("click",".favButton", function() {
-
-    // })
+    $(document).on("click",".favButton", function() {
+        console.log($(this));
+    })
 
     $(document).on("click",".gif", function() {
 
